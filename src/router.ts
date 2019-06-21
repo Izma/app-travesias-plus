@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import Login from './auth/Login.vue';
+
 Vue.use(Router);
 
 export default new Router({
@@ -19,16 +21,9 @@ export default new Router({
       ],
     },
     {
-      path: '/auth',
-      name: 'auth',
-      component: () => import('./views/shared/Auth.vue'),
-      children: [
-        {
-          path: 'login',
-          name: 'login',
-          component: () => import('./views/auth/Login.vue'),
-        },
-      ],
+      path: '/login',
+      component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/auth/Login.vue'),
     },
   ],
 });
